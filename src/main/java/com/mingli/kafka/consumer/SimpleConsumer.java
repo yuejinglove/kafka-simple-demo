@@ -17,12 +17,12 @@ import com.mingli.kafka.config.ConsumerProperties;
  * @version v1.0
  * @Description 简单的cunsumer，将接收到的消息打印出来
  */
-public class SimpleConsumer{
+public class SimpleConsumer extends Thread{
 	
-	public static void main(String[] args) {
-		SimpleConsumer consumer = new SimpleConsumer("test-group", ConsumerProperties.TOPIC);
-		consumer.run();
-	}
+//	public static void main(String[] args) {
+//		SimpleConsumer consumer = new SimpleConsumer("test-group", ConsumerProperties.TOPIC);
+//		consumer.run();
+//	}
 	
 	private String groupID;
 	private String topic;
@@ -56,9 +56,7 @@ public class SimpleConsumer{
 			}
 		}
 		catch (Exception e) {
-			System.out.println(e.getStackTrace());
-			System.out.println(e.getMessage());
-			System.out.println(e.toString());
+			e.printStackTrace();
 		}
 		finally {
 			consumer.close();

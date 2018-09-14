@@ -92,6 +92,18 @@ public class ProducerProperties {
 	public static final String COMPRESSION_TYPE = ProducerConfig.COMPRESSION_TYPE_CONFIG;
 	public static final String COMPRESSION_TYPE_VALUE = "none";
 	
+	
+	/*
+	 * 限制producer在单个broker连接上能够发送的未响应请求的数量
+	 */
+	public static final String MAX_IN_FLIGHT_REQUESTS_PER_ = ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION;
+	public static final String MAX_IN_FLIGHT_REQUESTS_PER__VALUE = Integer.toString(1);
+	
+	
+	
+	
+	
+	
 	/*
 	 * interceptor : 拦截器，用来定制化控制逻辑
 	 * 可对消息做一些定制化需求，比如修改消息

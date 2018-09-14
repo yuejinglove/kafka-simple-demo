@@ -9,9 +9,10 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 import com.mingli.kafka.config.ProducerProperties;
+import com.mingli.kafka.intfacor.IProducer;
 import com.mingli.kafka.pojo.User;
 
-public class UserProducer extends Thread {
+public class UserProducer extends Thread implements IProducer{
     private final KafkaProducer<String, User> producer;
     private final String topic;
 
@@ -41,7 +42,9 @@ public class UserProducer extends Thread {
                 System.out.println("Sent message: (" + messageNo + ", " + record.toString() + ")");
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
-            }
+            }finally {
+				this.close();
+			}
             ++messageNo;
         }
     }
@@ -49,10 +52,4 @@ public class UserProducer extends Thread {
         producer.close();
     }
     
-    
-	public static void main(String[] args) throws Throwable {
-			UserProducer producer = new UserProducer(ProducerProperties.TOPIC_USER);
-			producer.run();
-			producer.clone();
-		}
 }
