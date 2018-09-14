@@ -3,7 +3,7 @@ package com.mingli.kafka.config;
 import org.apache.kafka.clients.producer.ProducerConfig;
 /**
  * @author yuehui
- * @description Producer 配置类
+ * @description KafkaProducer 配置参数
  */
 public class ProducerProperties {
 	
@@ -22,7 +22,7 @@ public class ProducerProperties {
 	 * 默认值为0，不进行重试
 	 */
 	public static final String RETRIES = ProducerConfig.RETRIES_CONFIG;
-	public static final Integer RETRIES_VALUE = 3;
+	public static final String RETRIES_VALUE = Integer.toString(3);
 	
 	/*
 	 * buffer.memory: 制定producer端用于缓存消息的缓冲区大小，保存的是还未来得及发送到server端的消息，
@@ -30,7 +30,7 @@ public class ProducerProperties {
 	 * 默认值为 33554432 ,即 32MB
 	 */
 	public static final String BUFFER_MEMORY = ProducerConfig.BUFFER_MEMORY_CONFIG; 
-	public static final Integer BUFFER_MEMORY_VALUE = 33554432;
+	public static final String BUFFER_MEMORY_VALUE = Integer.toString(33554432);
 	
 	/*
 	 * key.serializer, value.serializer说明了使用何种序列化方式将用户提供的key和vaule值序列化成字节
@@ -55,7 +55,7 @@ public class ProducerProperties {
 	 * 批量发送可以减少生产者到服务端的请求数,有助于提高客户端和服务端的性能
 	 */
 	public static final String BATCH_SIZE = ProducerConfig.BATCH_SIZE_CONFIG;
-	public static final String BATCH_SIZE_VALUE = "1048576";			//1048576B
+	public static final String BATCH_SIZE_VALUE = Integer.toString(1048576);			//1048576B
 	
 	/*
 	 * linger.ms: 默认值为0,默认情况下缓冲区的消息会被立即发送到服务端，即使缓冲区的空间并没有被用完。
@@ -63,22 +63,23 @@ public class ProducerProperties {
      * batch.size和linger.ms是两种实现让客户端每次请求尽可能多的发送消息的机制，它们可以并存使用，并不冲突
 	 */
 	public static final String LINGER_MS = ProducerConfig.LINGER_MS_CONFIG;
-	public static final Integer LINGER_MS_VALUE = 100;				// 100ms
+	public static final String LINGER_MS_VALUE = Integer.toString(100);				// 100ms
 	
 	/*
 	 * max.request.size: 官网上解释该参数用于控制producer发送请求的大小
 	 * 实际上该参数控制的是producer端能够发送的最大消息大小
 	 */
 	public static final String MAX_REQUEST_SIZE = ProducerConfig.MAX_REQUEST_SIZE_CONFIG;
-	public static final Integer MAX_REQUEST_SIZE_VALUE = 10485760;	// 10485760B
+	public static final String MAX_REQUEST_SIZE_VALUE = Integer.toString(10485760);	// 10485760B
 	
 	/*
+	 * 消息发送的最长等待时间
 	 * 当producer发送请求给broker后，broker需要在规定的时间范围内将处理结果返回给producer
-	 * request.request.ms 即控制这个时间，默认值为30s
+	 * request.timeout.ms 即控制这个时间，默认值为30s
 	 * 通常情况下，超时会在回调函数中抛出TimeoutException异常交由用户处理
 	 */
 	public static final String REQUEST_TIMEOUT_MS = ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG;
-	public static final Integer REQUEST_TIMEOUT_MS_VALUE = 60000;  	// 60000ms
+	public static final String REQUEST_TIMEOUT_MS_VALUE = Integer.toString(60*1000);  	// 60000ms
 	
 	/*
 	 * 压缩数据的压缩类型。压缩最好用于批量处理，批量处理消息越多，压缩性能越好
