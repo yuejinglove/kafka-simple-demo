@@ -55,7 +55,7 @@ public class ProducerProperties {
 	 * 批量发送可以减少生产者到服务端的请求数,有助于提高客户端和服务端的性能
 	 */
 	public static final String BATCH_SIZE = ProducerConfig.BATCH_SIZE_CONFIG;
-	public static final Integer BATCH_SIZE_VALUE = 1048576;			//1048576B
+	public static final String BATCH_SIZE_VALUE = "1048576";			//1048576B
 	
 	/*
 	 * linger.ms: 默认值为0,默认情况下缓冲区的消息会被立即发送到服务端，即使缓冲区的空间并没有被用完。
@@ -86,6 +86,7 @@ public class ProducerProperties {
 	 * gzip : 
 	 * snappy : 由于kafka源码的某个关键设置，使得snappy表现不如lz4
 	 * lz4 : producer 结合lz4 的性能较好
+	 * 性能：lz4 >> snappy >> gzip
 	 */
 	public static final String COMPRESSION_TYPE = ProducerConfig.COMPRESSION_TYPE_CONFIG;
 	public static final String COMPRESSION_TYPE_VALUE = "none";

@@ -53,7 +53,7 @@ public class SimpleProducer extends Thread {
      */
     public SimpleProducer(String topic, Boolean isAsync) {
         Properties props = new Properties();
-        props.put(ProducerProperties.BOOTSTRAP_SERVERS, ProducerProperties.BATCH_SIZE_VALUE);
+        props.put(ProducerProperties.BOOTSTRAP_SERVERS, ProducerProperties.BOOTSTRAP_SERVERS_VALUE);
         props.put(ProducerProperties.ACKS, ProducerProperties.ACKS_VALUE);
         props.put(ProducerProperties.KEY_SERIALIZER_CLASS, ProducerProperties.KEY_SERIALIZER_CLASS_STRING);
         props.put(ProducerProperties.VALUE_SERIALIZER_CLASS, ProducerProperties.VALUE_SERIALIZER_CLASS_STRING);
